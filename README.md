@@ -1,9 +1,8 @@
 # companion-module-presentationcommander-server
 
-> **AI-assisted project.** This module was built with the help of
-> [Claude](https://claude.ai), Anthropic's AI assistant — including
-> implementation and documentation. Review it accordingly before relying on
-> it in production.
+> **AI-assisted project.** This codebase was created with [Claude](https://claude.com/claude-code)
+> (Anthropic), directed and reviewed by a human author — including implementation
+> and documentation. Review it accordingly before relying on it in production.
 
 A [Bitfocus Companion](https://bitfocus.io/companion) connection module for
 [Presentation Commander](https://github.com/allansargeant/presentation-commander-server) —
@@ -13,6 +12,13 @@ drive next/previous slide on connected Client Nodes.
 
 It talks to the Master Server's existing JSON-RPC automation API (`:9700`)
 over plain HTTP — no separate integration to install on the server side.
+
+```mermaid
+flowchart LR
+    Deck["Stream Deck / any<br/>Companion surface"] --> COMP["Bitfocus Companion"]
+    COMP --> MOD["This module"]
+    MOD -- "GET /state · POST /rpc<br/>JSON-RPC over HTTP :9700" --> SRV["Presentation Commander<br/>Master Server"]
+```
 
 ## What it does
 
@@ -74,6 +80,10 @@ your Companion version) → add this directory as a local module.
   the Client Node app that runs on each presentation laptop; `next-slide`/
   `previous-slide` actions here are forwarded to whichever Client Node you
   target.
+
+## Roadmap / TODO
+
+- [ ] Submit to the official Bitfocus Companion module store (currently install-as-local-developer-module only, see "Installing" above).
 
 ## License
 
