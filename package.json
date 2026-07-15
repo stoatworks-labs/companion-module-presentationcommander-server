@@ -1,0 +1,25 @@
+{
+	"name": "companion-module-presentationcommander-server",
+	"version": "1.0.0",
+	"main": "src/main.js",
+	"type": "module",
+	"scripts": {
+		"format": "prettier -w .",
+		"package": "companion-module-build"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/allansargeant/companion-module-presentationcommander-server.git"
+	},
+	"engines": {
+		"node": "^22.20"
+	},
+	"dependencies": {
+		"@companion-module/base": "~2.0.4"
+	},
+	"devDependencies": {
+		"@companion-module/tools": "^3.0.1",
+		"prettier": "^3.8.3"
+	}
+}
