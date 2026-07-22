@@ -58,7 +58,19 @@ SSH tunnel or a reverse proxy that adds its own authentication, then point
 this module's **Master Server host**/**port** fields at that tunnel/proxy
 instead of the raw port.
 
-## Installing (development / not yet in the Companion module store)
+## Installing (not yet in the Companion module store)
+
+### From a packaged release
+
+A GitHub Actions [release workflow](.github/workflows/release.yml) packages the
+module into the distributable `.tgz` via `companion-module-build` whenever a
+`v*` tag is pushed (or the workflow is run manually from the Actions tab). Grab
+the `.tgz` from the [Releases page](https://github.com/allansargeant/companion-module-presentationcommander-server/releases)
+once one is published, and import it via Companion's module-import UI
+(**Modules → Import module package** in current Companion versions). You can
+also build the same package locally with `npm install && npm run package`.
+
+### As a local developer module
 
 ```sh
 git clone https://github.com/allansargeant/companion-module-presentationcommander-server.git
