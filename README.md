@@ -36,6 +36,14 @@ flowchart LR
   lists and values refresh automatically as outputs, scenes, sources, or
   clients change.
 
+## Documentation
+
+| Doc | Contents |
+|---|---|
+| [docs/USER-GUIDE.md](docs/USER-GUIDE.md) | Building a surface, and where the feedbacks can mislead you |
+| [docs/API.md](docs/API.md) | Every action, feedback and variable, the config fields, and the poll loop |
+| [docs/DEVELOPING.md](docs/DEVELOPING.md) | The three-repo protocol, the module conventions, and the behaviours to preserve |
+
 ## Setup
 
 1. Install and enable this module in Companion (see **Installing** below).
