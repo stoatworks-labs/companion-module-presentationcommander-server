@@ -7,8 +7,8 @@
 	"description": "Control the Presentation Commander Master Server — route outputs, recall scenes, blackout, send stage notes, and drive next/previous slide on connected Client Nodes.",
 	"version": "1.0.0",
 	"license": "MIT",
-	"repository": "git+https://github.com/allansargeant/companion-module-presentationcommander-server.git",
-	"bugs": "https://github.com/allansargeant/companion-module-presentationcommander-server/issues",
+	"repository": "git+https://github.com/stoatworks-labs/companion-module-presentationcommander-server.git",
+	"bugs": "https://github.com/stoatworks-labs/companion-module-presentationcommander-server/issues",
 	"maintainers": [
 		{
 			"name": "Allan Sargeant",
