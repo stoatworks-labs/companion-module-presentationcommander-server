@@ -3,6 +3,7 @@ import { UpgradeScripts } from './upgrades.js'
 import UpdateActions from './actions.js'
 import UpdateFeedbacks from './feedbacks.js'
 import UpdateVariableDefinitions from './variables.js'
+import UpdatePresets from './presets.js'
 import { fetchState } from './api.js'
 
 // The module POLLS; it does not subscribe. The Master Server has a WebSocket
@@ -35,6 +36,7 @@ export default class ModuleInstance extends InstanceBase {
 		this.updateActions()
 		this.updateFeedbacks()
 		this.updateVariableDefinitions()
+		this.updatePresets()
 		this.startPolling()
 	}
 
@@ -123,6 +125,7 @@ export default class ModuleInstance extends InstanceBase {
 				this.updateActions()
 				this.updateFeedbacks()
 				this.updateVariableDefinitions()
+				this.updatePresets()
 				this.refreshVariableValues()
 				this.checkFeedbacks()
 			}
@@ -163,6 +166,15 @@ export default class ModuleInstance extends InstanceBase {
 
 	updateFeedbacks() {
 		UpdateFeedbacks(this)
+	}
+
+	/**
+	 * Presets are generated from the polled state, so they are re-registered
+	 * alongside the actions and feedbacks whenever it changes — a scene added
+	 * mid-show should appear in the preset list without a reconnect.
+	 */
+	updatePresets() {
+		UpdatePresets(this)
 	}
 
 	/**
