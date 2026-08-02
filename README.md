@@ -20,6 +20,21 @@ flowchart LR
     MOD -- "GET /state · POST /rpc<br/>JSON-RPC over HTTP :9700" --> SRV["Presentation Commander<br/>Master Server"]
 ```
 
+<!-- downloads:start -->
+
+## Download
+
+**[v1.0.0](https://github.com/stoatworks-labs/companion-module-presentationcommander-server/releases/tag/v1.0.0)**
+
+This release contains:
+
+- [`companion-module-presentationcommander-server-pkg.tgz`](https://github.com/stoatworks-labs/companion-module-presentationcommander-server/releases/latest/download/companion-module-presentationcommander-server-pkg.tgz) — npm package, 5 KB
+- [`presentationcommander-server-1.0.0.tgz`](https://github.com/stoatworks-labs/companion-module-presentationcommander-server/releases/download/v1.0.0/presentationcommander-server-1.0.0.tgz) — npm package, 5 KB
+
+All builds, checksums and release notes: [github.com/stoatworks-labs/companion-module-presentationcommander-server/releases](https://github.com/stoatworks-labs/companion-module-presentationcommander-server/releases).
+
+<!-- downloads:end -->
+
 ## What it does
 
 - **Actions** — Route Output, Blackout Output, Recall Scene to Output, Send
