@@ -120,6 +120,27 @@ your Companion version) → add this directory as a local module.
 
 - [ ] Submit to the official Bitfocus Companion module store (currently install-as-local-developer-module only, see "Installing" above).
 
+## What changed in 1.1.0
+
+**New: presets**, generated from the Master Server's live outputs, sources,
+scenes and clients — one section per output containing a button per routable
+target with tally already wired, one section for the Client Nodes, and stage
+notes.
+
+Two details worth knowing about them:
+
+- The blackout preset lights off the **same** routing feedback as the crosspoint
+  buttons, comparing against the empty target. The server represents "unrouted"
+  as a null `routedSourceId`, so no separate feedback was needed.
+- Slide buttons light from whether the **Client Node is online**, not from
+  whether the slide advanced. The server forwards next/previous to a client only
+  if it is connected, and otherwise steps its own counter and still reports
+  success — online is the only honest signal available.
+
+**New: `npm test`** — drives the real source against a fake automation API on a
+real HTTP server, covering the generated presets, the tally feedbacks, and a
+rejected command being treated as a failure rather than a success.
+
 ## License
 
 MIT
