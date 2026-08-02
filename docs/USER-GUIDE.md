@@ -40,13 +40,13 @@ When it's connected the instance shows OK and the `connection_status` variable r
 
 ## The buttons you can build
 
-| Action | What it does |
-|---|---|
-| **Route Output** | send an output to a scene or a single source |
-| **Blackout Output** | send an output to nothing |
-| **Recall Scene to Output** | put a scene on one output |
-| **Send Note to Stage** | push a message to the presenter |
-| **Next Slide** / **Previous Slide** | step a Client Node's deck |
+| Action                              | What it does                                 |
+| ----------------------------------- | -------------------------------------------- |
+| **Route Output**                    | send an output to a scene or a single source |
+| **Blackout Output**                 | send an output to nothing                    |
+| **Recall Scene to Output**          | put a scene on one output                    |
+| **Send Note to Stage**              | push a message to the presenter              |
+| **Next Slide** / **Previous Slide** | step a Client Node's deck                    |
 
 **All the dropdowns fill themselves from the live server** — you pick real output, scene, source
 and client names, not generated ids. They refresh automatically as the server's list changes.
@@ -105,11 +105,11 @@ Don't treat a button that hasn't lit yet as a failed command.
 
 ## Variables
 
-| Variable | Shows |
-|---|---|
-| `connection_status` | `Connected` / `Disconnected` — **the one to trust** |
-| `client_count` | how many Client Nodes are online |
-| `routed_<output>` | the scene or source name on that output, or `Unrouted` |
+| Variable            | Shows                                                  |
+| ------------------- | ------------------------------------------------------ |
+| `connection_status` | `Connected` / `Disconnected` — **the one to trust**    |
+| `client_count`      | how many Client Nodes are online                       |
+| `routed_<output>`   | the scene or source name on that output, or `Unrouted` |
 
 `routed_*` variables only exist **after the first successful poll**. On a server that has never
 been reachable, they aren't defined at all — which is why a fresh install against a stopped
@@ -131,18 +131,18 @@ server shows nothing rather than showing `Unrouted`.
 
 ## Troubleshooting
 
-| Symptom | Cause |
-|---|---|
-| **Instance shows Connection Failure** | Server not running, or not reachable at that host/port. Default is loopback-only ([Connecting](#connecting)). |
-| **Companion is on another machine and can't connect** | The API binds `127.0.0.1`. Needs a tunnel or proxy, not a config change ([Connecting](#connecting)). |
-| **Dropdowns are empty** | No successful poll yet. They fill from live server state ([the buttons](#the-buttons-you-can-build)). |
-| **A new button's Output field is blank** | The server had no outputs when the module last refreshed ([the buttons](#the-buttons-you-can-build)). |
-| **Button lit green but nothing is on air** | The connection may be down — feedbacks keep the last known state ([Feedbacks](#feedbacks-and-where-they-lie)). Check `connection_status`. |
-| **Slide button works but the deck doesn't move** | The Client Node is offline and the server simulated it ([the buttons](#the-buttons-you-can-build)). |
-| **A change I made on the server didn't light the button** | Up to 3 seconds of poll lag ([Feedbacks](#feedbacks-and-where-they-lie)). |
-| **`routed_*` variables don't exist** | No successful poll has ever happened ([Variables](#variables)). |
-| **Send Note replaced my previous message** | One slot, not a queue ([the buttons](#the-buttons-you-can-build)). |
-| **A Stream Deck button silently stopped working after a server update** | The three repos share a protocol kept in sync by hand — this module is the one people forget. See [DEVELOPING.md](DEVELOPING.md). |
+| Symptom                                                                 | Cause                                                                                                                                     |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Instance shows Connection Failure**                                   | Server not running, or not reachable at that host/port. Default is loopback-only ([Connecting](#connecting)).                             |
+| **Companion is on another machine and can't connect**                   | The API binds `127.0.0.1`. Needs a tunnel or proxy, not a config change ([Connecting](#connecting)).                                      |
+| **Dropdowns are empty**                                                 | No successful poll yet. They fill from live server state ([the buttons](#the-buttons-you-can-build)).                                     |
+| **A new button's Output field is blank**                                | The server had no outputs when the module last refreshed ([the buttons](#the-buttons-you-can-build)).                                     |
+| **Button lit green but nothing is on air**                              | The connection may be down — feedbacks keep the last known state ([Feedbacks](#feedbacks-and-where-they-lie)). Check `connection_status`. |
+| **Slide button works but the deck doesn't move**                        | The Client Node is offline and the server simulated it ([the buttons](#the-buttons-you-can-build)).                                       |
+| **A change I made on the server didn't light the button**               | Up to 3 seconds of poll lag ([Feedbacks](#feedbacks-and-where-they-lie)).                                                                 |
+| **`routed_*` variables don't exist**                                    | No successful poll has ever happened ([Variables](#variables)).                                                                           |
+| **Send Note replaced my previous message**                              | One slot, not a queue ([the buttons](#the-buttons-you-can-build)).                                                                        |
+| **A Stream Deck button silently stopped working after a server update** | The three repos share a protocol kept in sync by hand — this module is the one people forget. See [DEVELOPING.md](DEVELOPING.md).         |
 
 ---
 

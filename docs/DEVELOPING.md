@@ -9,11 +9,11 @@ A Bitfocus Companion connection module for Presentation Commander. JavaScript, s
 
 It is one of three sharing a protocol:
 
-| Repo | Role |
-|---|---|
-| **companion-module-…-server** (this) | Companion/Stream Deck control surface module |
-| **presentation-commander-server** | Master control: NDI matrix routing, scenes, notes |
-| **presentation-commander-client** | Presentation laptop; bespoke PDF engine |
+| Repo                                 | Role                                              |
+| ------------------------------------ | ------------------------------------------------- |
+| **companion-module-…-server** (this) | Companion/Stream Deck control surface module      |
+| **presentation-commander-server**    | Master control: NDI matrix routing, scenes, notes |
+| **presentation-commander-client**    | Presentation laptop; bespoke PDF engine           |
 
 > **When the server's protocol changes, the client usually gets updated because the pair is
 > obvious — and this module quietly breaks, so a Stream Deck button stops working during a show
@@ -91,7 +91,7 @@ Things to know before changing it:
 - **The stringify comparison is coarse** — any field the server touches (an audio level, a
   timestamp) counts as a change and triggers a full re-registration. Cheap enough at this scale;
   worth knowing if the state grows.
-- **`this.state` is deliberately *not* cleared on failure.** That keeps dropdowns populated
+- **`this.state` is deliberately _not_ cleared on failure.** That keeps dropdowns populated
   through a blip — but it also means **both feedbacks keep evaluating against stale state while
   disconnected**, so a route button stays green when the module has no idea what's on air.
 
@@ -105,7 +105,7 @@ Things to know before changing it:
   successful poll, `setVariableDefinitions({})` is called, so `routed_*` variables don't exist at
   all against a server that has never been reachable.
 - **`setVariableDefinitions` takes an object keyed by id, not an array** —
-  `@companion-module/base` throws *"Variable definitions should be an object, not an array"*
+  `@companion-module/base` throws _"Variable definitions should be an object, not an array"_
   otherwise. The comment in `variables.js` records this; keep it.
 
 ---
@@ -119,7 +119,7 @@ Two specific places that principle applies:
 
 - **Slide actions can succeed without moving anything.** If the target Client Node isn't
   connected, the server steps its own counter and returns success; this module cannot tell the
-  difference. Don't build anything on the action's return value — the *Client Node is online*
+  difference. Don't build anything on the action's return value — the _Client Node is online_
   feedback is the real signal.
 - **`routedSourceId` holds either a scene id or a source id in one field.** `routeTargetChoices`
   merges both lists with `Scene:` / `Source:` prefixes, and `refreshVariableValues` resolves
@@ -131,7 +131,7 @@ Two specific places that principle applies:
 
 - `safeVariableId()` strips ids to `[a-zA-Z0-9_]`. The server's generated ids are already safe;
   it's a guard against future id formats.
-- Module id `presentationcommander-server`, manufacturer *Presentation Commander*.
+- Module id `presentationcommander-server`, manufacturer _Presentation Commander_.
 - Not yet in the Companion module store — installed from a packaged release or as a local
   developer module. See the README.
 - "Commit" means commit **and** push.

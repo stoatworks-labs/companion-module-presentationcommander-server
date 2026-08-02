@@ -15,11 +15,11 @@ JavaScript. Small repo — 14 tracked files.
 
 ## 2. It is one of three repos sharing a protocol
 
-| Repo | Role |
-|---|---|
-| **companion-module-...-server** (this) | Companion/Stream Deck control surface module |
-| **presentation-commander-server** | Master control: NDI matrix routing, scenes, notes |
-| **presentation-commander-client** | Presentation laptop; bespoke PDF engine |
+| Repo                                   | Role                                              |
+| -------------------------------------- | ------------------------------------------------- |
+| **companion-module-...-server** (this) | Companion/Stream Deck control surface module      |
+| **presentation-commander-server**      | Master control: NDI matrix routing, scenes, notes |
+| **presentation-commander-client**      | Presentation laptop; bespoke PDF engine           |
 
 **This is the repo people forget.** When the server's protocol changes, the client usually
 gets updated because the pair is obvious — and this module quietly breaks, so a Stream Deck

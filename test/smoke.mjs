@@ -89,6 +89,7 @@ const self = {
   log: () => {},
   updateStatus: () => {},
   checkFeedbacks: () => {},
+  checkAllFeedbacks: () => {},
   setActionDefinitions: (d) => (actions = d),
   setFeedbackDefinitions: (d) => (feedbacks = d),
   setVariableDefinitions: (d) => {
@@ -168,12 +169,15 @@ await check("nothing orphaned or dangling in the structure", () => {
   );
   for (const s of presetStructure)
     for (const g of s.definitions)
-      for (const ref of g.presets) assert.ok(presetDefs[ref], `${s.id} -> ${ref}`);
+      for (const ref of g.presets)
+        assert.ok(presetDefs[ref], `${s.id} -> ${ref}`);
   for (const id of Object.keys(presetDefs))
     assert.ok(referenced.has(id), `${id} defined but in no section`);
 });
 await check("preset variables use the connection label and all exist", () => {
-  const texts = Object.values(presetDefs).map((p) => p.style.text).join("\n");
+  const texts = Object.values(presetDefs)
+    .map((p) => p.style.text)
+    .join("\n");
   assert.ok(texts.includes("$(Commander:"), "uses self.label");
   for (const m of texts.matchAll(/\$\(Commander:([a-zA-Z0-9_]+)\)/g))
     assert.ok(variables[m[1]], `${m[1]} is defined`);
@@ -183,9 +187,12 @@ await check("the blackout preset lights off the unrouted state", () => {
   assert.equal(p.feedbacks[0].feedbackId, "outputRouted");
   assert.equal(p.feedbacks[0].options.targetId, "");
 });
-await check("slide buttons light from client ONLINE, not from the slide", () => {
-  assert.equal(presetDefs.next_cli_1.feedbacks[0].feedbackId, "clientOnline");
-});
+await check(
+  "slide buttons light from client ONLINE, not from the slide",
+  () => {
+    assert.equal(presetDefs.next_cli_1.feedbacks[0].feedbackId, "clientOnline");
+  },
+);
 
 console.log("\n== behaviour ==");
 await check("route lights the crosspoint tally", async () => {
@@ -208,14 +215,37 @@ await check("clientOnline distinguishes the two clients", () => {
   assert.equal(fb("clientOnline", { clientId: "cli-1" }), true);
   assert.equal(fb("clientOnline", { clientId: "cli-2" }), false);
 });
-await check("a rejected command throws rather than reporting success", async () => {
-  await assert.rejects(() =>
-    sendCommand(self, { type: "route", outputId: "nope", sourceId: "x" }),
-  );
-});
+await check(
+  "a rejected command throws rather than reporting success",
+  async () => {
+    await assert.rejects(() =>
+      sendCommand(self, { type: "route", outputId: "nope", sourceId: "x" }),
+    );
+  },
+);
 
 server.close();
+console.log("\n== the checkFeedbacks trap ==");
+// InstanceBase.checkFeedbacks(type, ...rest) requires AT LEAST ONE type: with no
+// arguments it forwards [undefined] to the host, which checks a feedback type
+// called "undefined" — i.e. nothing at all. Every feedback then sits frozen at
+// whatever it last evaluated to, with no error anywhere. checkAllFeedbacks() is
+// the correct call for "re-evaluate everything".
+await check("no bare checkFeedbacks() survives in src/", async () => {
+  const { readdirSync, readFileSync } = await import("node:fs");
+  const dir = new URL("../src/", import.meta.url).pathname;
+  const offenders = [];
+  for (const f of readdirSync(dir)) {
+    if (!/\.(js|ts)$/.test(f)) continue;
+    const body = readFileSync(dir + f, "utf8");
+    if (/[^A-Za-z]checkFeedbacks\(\s*\)/.test(body)) offenders.push(f);
+  }
+  assert.deepEqual(offenders, [], "use checkAllFeedbacks() instead");
+});
+
 console.log(
-  failures === 0 ? "\nAll checks passed.\n" : `\n${failures} CHECK(S) FAILED.\n`,
+  failures === 0
+    ? "\nAll checks passed.\n"
+    : `\n${failures} CHECK(S) FAILED.\n`,
 );
 process.exit(failures === 0 ? 0 : 1);

@@ -41,9 +41,9 @@ All builds, checksums and release notes: [github.com/stoatworks-labs/companion-m
   Note to Stage, Next Slide, Previous Slide. Every output/scene/source/client
   dropdown is populated live from the Master Server's current state, so the
   list always matches what's actually configured — no hand-typed ids.
-- **Feedbacks** — *Output is routed to a specific source/scene* (highlight a
-  button when a given output is showing what you expect) and *Client Node
-  is online* (highlight while a given presentation laptop is connected).
+- **Feedbacks** — _Output is routed to a specific source/scene_ (highlight a
+  button when a given output is showing what you expect) and _Client Node
+  is online_ (highlight while a given presentation laptop is connected).
 - **Variables** — `connection_status`, `client_count`, and one
   `routed_<output-id>` variable per output holding the name of whatever
   it's currently routed to (or `Unrouted`).
@@ -53,10 +53,10 @@ All builds, checksums and release notes: [github.com/stoatworks-labs/companion-m
 
 ## Documentation
 
-| Doc | Contents |
-|---|---|
-| [docs/USER-GUIDE.md](docs/USER-GUIDE.md) | Building a surface, and where the feedbacks can mislead you |
-| [docs/API.md](docs/API.md) | Every action, feedback and variable, the config fields, and the poll loop |
+| Doc                                      | Contents                                                                        |
+| ---------------------------------------- | ------------------------------------------------------------------------------- |
+| [docs/USER-GUIDE.md](docs/USER-GUIDE.md) | Building a surface, and where the feedbacks can mislead you                     |
+| [docs/API.md](docs/API.md)               | Every action, feedback and variable, the config fields, and the poll loop       |
 | [docs/DEVELOPING.md](docs/DEVELOPING.md) | The three-repo protocol, the module conventions, and the behaviours to preserve |
 
 ## Setup

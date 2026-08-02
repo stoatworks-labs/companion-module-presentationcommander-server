@@ -6,12 +6,14 @@
 // array) — @companion-module/base throws "Variable definitions should be
 // an object, not an array" otherwise.
 export default function UpdateVariableDefinitions(self, safeVariableId) {
-	const defs = {
-		connection_status: { name: 'Connection status' },
-		client_count: { name: 'Connected Client Nodes' },
-	}
-	for (const output of self.state.outputs) {
-		defs[`routed_${safeVariableId(output.id)}`] = { name: `Routed source/scene — ${output.name}` }
-	}
-	self.setVariableDefinitions(defs)
+  const defs = {
+    connection_status: { name: "Connection status" },
+    client_count: { name: "Connected Client Nodes" },
+  };
+  for (const output of self.state.outputs) {
+    defs[`routed_${safeVariableId(output.id)}`] = {
+      name: `Routed source/scene — ${output.name}`,
+    };
+  }
+  self.setVariableDefinitions(defs);
 }
