@@ -181,7 +181,9 @@ export default function UpdatePresets(self) {
       name: `${client.name}: previous slide`,
       text: `${client.name}\nPREV`,
       size: "18",
-      actions: [{ actionId: "previousSlide", options: { clientId: client.id } }],
+      actions: [
+        { actionId: "previousSlide", options: { clientId: client.id } },
+      ],
       feedbacks: [
         {
           feedbackId: "clientOnline",
@@ -275,7 +277,13 @@ export default function UpdatePresets(self) {
         id: "notes-main",
         type: "simple",
         name: "Notes and status",
-        presets: ["note_wrap", "note_time", "note_clear", "connected", "client_count"],
+        presets: [
+          "note_wrap",
+          "note_time",
+          "note_clear",
+          "connected",
+          "client_count",
+        ],
       },
     ],
     keywords: ["note", "stage", "status"],
