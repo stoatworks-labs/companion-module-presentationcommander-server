@@ -5,6 +5,7 @@ import UpdateFeedbacks from "./feedbacks.js";
 import UpdateVariableDefinitions from "./variables.js";
 import UpdatePresets from "./presets.js";
 import { fetchState } from "./api.js";
+import { aboutField } from './about-field.js'
 
 // The module POLLS; it does not subscribe. The Master Server has a WebSocket
 // (its client hub, :9800) but that is for Client Nodes, not control surfaces —
@@ -76,6 +77,10 @@ export default class ModuleInstance extends InstanceBase {
         default: "9700",
         regex: Regex.PORT,
       },
+    
+    	// Vendored from stoatworks-backend/about. A Companion module has no
+    	// UI of its own, so this config panel is the only surface it has.
+    	aboutField(),
     ];
   }
 
