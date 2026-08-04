@@ -144,3 +144,7 @@ rejected command being treated as a failure rather than a success.
 ## License
 
 MIT
+
+<!-- attributions:start -->
+This project is built on other people's work — see [ATTRIBUTIONS.md](ATTRIBUTIONS.md).
+<!-- attributions:end -->
