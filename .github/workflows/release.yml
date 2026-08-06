@@ -38,7 +38,7 @@ jobs:
           if [ -d pkg ]; then tar czf "out/companion-module-presentationcommander-server-pkg.tgz" pkg; fi
           ls -la out
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: companion-module-package
           path: out/*
