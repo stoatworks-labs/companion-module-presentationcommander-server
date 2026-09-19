@@ -24,12 +24,12 @@ flowchart LR
 
 ## Download
 
-**[v1.1.3](https://github.com/stoatworks-labs/companion-module-presentationcommander-server/releases/tag/v1.1.3)**
+**[v1.1.4](https://github.com/stoatworks-labs/companion-module-presentationcommander-server/releases/tag/v1.1.4)**
 
 This release contains:
 
 - [`companion-module-presentationcommander-server-pkg.tgz`](https://github.com/stoatworks-labs/companion-module-presentationcommander-server/releases/latest/download/companion-module-presentationcommander-server-pkg.tgz) — npm package, 8 KB
-- [`presentationcommander-server-1.1.3.tgz`](https://github.com/stoatworks-labs/companion-module-presentationcommander-server/releases/download/v1.1.3/presentationcommander-server-1.1.3.tgz) — npm package, 8 KB
+- [`presentationcommander-server-1.1.4.tgz`](https://github.com/stoatworks-labs/companion-module-presentationcommander-server/releases/download/v1.1.4/presentationcommander-server-1.1.4.tgz) — npm package, 8 KB
 
 All builds, checksums and release notes: [github.com/stoatworks-labs/companion-module-presentationcommander-server/releases](https://github.com/stoatworks-labs/companion-module-presentationcommander-server/releases).
 
