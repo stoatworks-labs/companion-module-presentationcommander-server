@@ -7,6 +7,8 @@ and step slides.
 The [README](../README.md) covers installing the module and pointing it at the server. This guide
 is about building a surface with it, and what to be careful of.
 
+> This module was built with AI assistance, directed and reviewed by a human author.
+
 ---
 
 ## What this drives

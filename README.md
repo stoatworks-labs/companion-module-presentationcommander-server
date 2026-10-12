@@ -89,7 +89,7 @@ A GitHub Actions [release workflow](.github/workflows/release.yml) builds the
 distributable `.tgz` with `companion-module-build` whenever a `v*` tag is pushed
 (or when someone runs the workflow by hand from the Actions tab). Grab the
 `.tgz` from the [Releases page](https://github.com/stoatworks-labs/companion-module-presentationcommander-server/releases)
-once there's one up, and import it through Companion's module import
+and import it through Companion's module import
 (**Modules → Import module package** in current Companion versions). You can
 also build the same package yourself with `npm install && npm run package`.
 
@@ -118,7 +118,7 @@ Companion version keeps it) and add this folder as a local module.
 
 ## Roadmap / TODO
 
-- [ ] Submit to the official Bitfocus Companion module store (currently install-as-local-developer-module only, see "Installing" above).
+- [ ] Submit to the official Bitfocus Companion module store (until then it installs from a packaged release or as a local developer module, see "Installing" above).
 
 ## What changed in 1.1.0
 
