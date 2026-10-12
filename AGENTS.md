@@ -11,7 +11,7 @@ A **Bitfocus Companion connection module** for **Presentation Commander**. It le
 Master Server be driven from a **Stream Deck** (or any other Companion surface): route
 outputs, recall scenes, blackout, send stage notes.
 
-JavaScript. Small repo — 14 tracked files.
+JavaScript. Small repo — 33 tracked files.
 
 ## 2. It is one of three repos sharing a protocol
 

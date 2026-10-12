@@ -1,7 +1,7 @@
 # Companion Module — Developing
 
 A Bitfocus Companion connection module for Presentation Commander. JavaScript, small repo —
-15 tracked files.
+33 tracked files.
 
 ---
 
@@ -43,8 +43,9 @@ Practical notes:
   server restart is, in practice, a dead surface mid-event. The poll loop is what provides that
   today — it keeps retrying and recovers on its own.
 
-**No presets are currently shipped** — there is no `src/presets.js`. Adding a preset set would be
-a straightforward improvement for anyone building a surface from scratch.
+**Presets ship in `src/presets.js`** (since 1.1.0). They're built from the server's live outputs,
+sources, scenes and clients, and rebuilt on each poll that sees a change, so none exist before the
+first successful poll.
 
 ---
 
@@ -59,6 +60,7 @@ src/
   feedbacks.js   two boolean feedbacks
   variables.js   variable DEFINITIONS (values live in main.js)
   choices.js     dropdown choice lists, shared by actions and feedbacks
+  presets.js     presets generated from the live server state
   upgrades.js    Companion upgrade scripts
 companion/manifest.json
 ```
