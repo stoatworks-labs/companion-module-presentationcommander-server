@@ -120,7 +120,46 @@ Companion version keeps it) and add this folder as a local module.
 
 - [ ] Submit to the official Bitfocus Companion module store (until then it installs from a packaged release or as a local developer module, see "Installing" above).
 
-## What changed in 1.1.0
+## What changed
+
+### 1.1.4
+
+**Installed from the release package, the module crashed on load.** Companion
+showed _Connection is not running_, kept restarting it, and the log said
+`Cannot find module '../package.json'`. The About block at the bottom of the
+connection's config panel read `package.json` relative to its own source file,
+which is fine in a checkout and wrong once the module's bundled for release.
+Every packaged release since the About block arrived had it; a checkout on the
+developer modules path didn't, which is how it went unnoticed. The About block
+now finds what it needs either way and can't stop the module loading.
+
+### 1.1.3
+
+No change to what the module does. `npm test` no longer stubs
+`parseVariablesInString` and `parseVariablesInField`, which
+`@companion-module/base` 2.x doesn't have, so a call to either would now fail the
+suite instead of passing it. This module never made one. Also in this release:
+`@companion-module/base` 2.1.3 and `@companion-module/tools` 3.1.0.
+
+### 1.1.2
+
+Packaging only; the module's code didn't change.
+
+- **The release package couldn't be installed.**
+  `companion-module-presentationcommander-server-pkg.tgz` was made by
+  re-tarring the build tool's staging folder, which put `package.json` one
+  folder down from where Companion looks. It's now a copy of the archive
+  `companion-module-build` makes, and both archives are checked for
+  `package.json` and `companion/manifest.json` at their root before a release
+  goes out.
+- **The help button has a page behind it**: the module ships `companion/HELP.md`.
+
+### 1.1.1
+
+Maintenance only: the release workflow's actions were updated. The module's
+code didn't change.
+
+### 1.1.0
 
 **New: presets**, built from the Master Server's live outputs, sources, scenes
 and clients. There's one section per output with a button for each routable
