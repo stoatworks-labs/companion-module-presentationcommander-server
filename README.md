@@ -10,6 +10,8 @@ It controls a running Master Server from a Stream Deck (or any other Companion s
 you can route outputs, recall scenes, black out, send stage notes, and drive
 next/previous slide on the connected Client Nodes.
 
+The [project page](https://stoatworks-labs.com/software/companion-presentation-commander-server/) has the downloads and the [user guide](https://stoatworks-labs.com/software/companion-presentation-commander-server/guide/).
+
 It talks to the Master Server's existing JSON-RPC automation API (`:9700`)
 over plain HTTP, so there's nothing extra to install on the server end.
 
