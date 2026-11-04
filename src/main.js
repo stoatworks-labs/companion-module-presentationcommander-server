@@ -1,4 +1,4 @@
-import { InstanceBase, Regex, InstanceStatus } from "@companion-module/base";
+import { InstanceBase, InstanceStatus } from "@companion-module/base";
 import { UpgradeScripts } from "./upgrades.js";
 import UpdateActions from "./actions.js";
 import UpdateFeedbacks from "./feedbacks.js";
@@ -61,21 +61,27 @@ export default class ModuleInstance extends InstanceBase {
         value:
           "Points at the Master Server's automation API (127.0.0.1-only by default — see the module README if Companion runs on a different machine).",
       },
+      // Plain text and number fields rather than Regex.HOSTNAME / Regex.PORT,
+      // which base 2.2.2 deprecated. A saved string port is converted in
+      // upgrades.js.
       {
         type: "textinput",
         id: "host",
         label: "Master Server host",
+        tooltip: "IP address (IPv4 or IPv6) or hostname",
         width: 8,
+        minLength: 1,
         default: "127.0.0.1",
-        regex: Regex.HOSTNAME,
       },
       {
-        type: "textinput",
+        type: "number",
         id: "port",
         label: "Automation API port",
         width: 4,
-        default: "9700",
-        regex: Regex.PORT,
+        min: 1,
+        max: 65535,
+        asInteger: true,
+        default: 9700,
       },
 
       // Vendored from stoatworks-backend/about. A Companion module has no

@@ -13,8 +13,17 @@
 // the module's default host is loopback. Reaching it from another machine needs
 // a tunnel or an authenticating proxy, not a config change.
 
+// The host field takes any text, so an IPv6 address needs its brackets added
+// before it can sit in a URL.
+export function apiUrl(self, path) {
+  const host = String(self.config.host).trim();
+  const bracketed =
+    host.includes(":") && !host.startsWith("[") ? `[${host}]` : host;
+  return `http://${bracketed}:${self.config.port}${path}`;
+}
+
 export async function fetchState(self) {
-  const url = `http://${self.config.host}:${self.config.port}/state`;
+  const url = apiUrl(self, "/state");
   const res = await fetch(url);
   if (!res.ok) throw new Error(`GET /state failed: HTTP ${res.status}`);
   return res.json();
@@ -35,7 +44,7 @@ export async function fetchState(self) {
  * feedback is the honest signal.
  */
 export async function sendCommand(self, command) {
-  const url = `http://${self.config.host}:${self.config.port}/rpc`;
+  const url = apiUrl(self, "/rpc");
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
